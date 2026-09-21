@@ -74,30 +74,48 @@ ll get_msb(ll x) {
 }
 
 void solve(){
-    // ll n; cin>>n;
-    // vll arr(n);
-    // rep(i,0,n) cin>>arr[i];
+    vll p = {4,8,15,16,23,42};
 
-    // ll hi = *std::max_element(arr.begin(),arr.end());
+    ll ans12 ,ans23 ,ans45,ans56;
 
-    // rep(i,1,hi){
-    //     bool flag = true;
-    //     rep(j,1,n){
-    //         if()
-    //     }
-    // }
+    cout<<"? 1 2"<<nl;
+    cin>>ans12;
+
+    cout<<"? 2 3"<<nl;
+    cin>>ans23;
+
+    cout<<"? 4 5"<<nl;
+    cin>>ans45;
+
+    cout<<"? 5 6"<<nl;
+    cin>>ans56;
+
+    do {
+        if(p[0]*p[1]==ans12 &&
+            p[1]*p[2]==ans23 &&
+            p[3]*p[4]==ans45 &&
+            p[4]*p[5]==ans56
+        ){
+            break;
+        }
+    }while(next_permutation(p.begin(),p.end()));
+
+    cout<<"! ";
+    rep(i,0,6){
+        cout<<p[i]<<" ";
+    }cout<<nl;
 }
 
 int main() {
-    FAST_IO;
+    //FAST_IO;
 
-    int t;
-    cin >> t;
-    while (t--) {
-        solve();
-    }
+    // int t;
+    // cin >> t;
+    // while (t--) {
+    //     solve();
+    // }
 
-    // solve();
+    solve();
 
     return 0;
 }
