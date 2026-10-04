@@ -82,52 +82,27 @@ bool isPd(const vector<ll>& arr) {
     return true;
 }
 
-pair<ll, ll> pDindices(const vector<ll>& arr) {
-    if (arr.size() <= 1) return {-1, -1};
-    
-    ll l = 0, r = arr.size() - 1;
-    while(l < r) {
-        if(arr[l] != arr[r]) {
-            return {l, r};
+bool isEqual(vector<ll>& arr){
+    ll n = sz(arr);
+    rep(i,1,n){
+        if(arr[i-1]!=arr[i]){
+            return false;
         }
-        l++;
-        r--;
     }
-    return {-1, -1};
+    return true;
 }
 
 void solve(){
-    ll n;cin>>n;
-    vll arr(n);
-    cin>>arr;
+    ll n; cin>>n;
+    vll arr(n); cin>>arr;
 
-    ll G1 = 0, G2 =0;
-    rep(i,0,n){
-        if((i+1)%2==0 ){
-            G1 = __gcd(G1,arr[i]);
-        }else{
-            G2 = __gcd(G2,arr[i]);
-        }
-    }
-    bool G1_is = true , G2_is = true;
-    rep(i,0,n){
-        if((i+1)%2==0 ){
-            if(arr[i]%G2==0){
-                G2_is= false;
-            }
-        }else{
-            if( arr[i]%G1==0 ){
-                G1_is = false;
-            }
-        }
-    }
-    if(G1_is){
-        cout<<G1<<nl;
+    // phle se equal h 
+    if(isEqual){
+        cout<<0<<nl;
         return;
-    }else if(G2_is){
-        cout<<G2<<nl;
-        return;
-    }else if(!G1_is && !G2_is){
+    }
+
+    if(n==1){
         cout<<0<<nl;
         return;
     }

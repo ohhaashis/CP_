@@ -13,7 +13,7 @@ using vll = vector<ll>;
 using vvi = vector<vector<int>>;
 using vvll= vector<vector<ll>>;
 
-const ll INF = 1e18;         
+const ll INF = 2e18;         
 const int MOD = 1e9 + 7;    
 const int MOD2 = 998244353;
 
@@ -58,40 +58,45 @@ ll lcm (ll a , ll b){
     return (a*b)/(__gcd(a,b));
 }
 
-ll calcSum(ll st , ll end){
-    ll sum = ( (st+end)*(end-st+1) )/2;
-    return sum;
-}
-
 void solve(){
-    ll n,k; cin>>n>>k;
-    vll arr(n);
-    rep(i,0,n) cin>>arr[i];
+    ll n,k ; cin>>n>>k;
+    
+    vvll pos(k+1);
 
-    // base case
+    rep(i,1,k+1){
+        pos[i].push_back(0);
+    }
+    rep(i,1,n+1){
+        ll x; cin>>x;
+        pos[x].push_back(i);
+    }
 
-    bool flag = true;
-    int cnt1 = 0;
-    rep(i,0,n-1){
-        if(arr[i]!=arr[i+1]){
-            flag = false;
-            cnt1++;
+    rep(i,1,k+1){
+        pos[i].push_back(n+1);
+    }
+
+    ll ans = 1e9;
+
+    rep(i,1,k+1){
+        ll m1 = 0 , m2 = 0;
+
+        rep(j,1,pos[i].size()){
+            ll gap = pos[i][j]-pos[i][j-1] - 1;
+
+            if(gap>m1){
+                m2 = m1; 
+                m1 = gap;
+            }else if(gap>m2){
+                m2 = gap;
+            }
         }
-    }
-    if(flag==true){
-        cout<<0<<endl;
-        return;
-    }else if(cnt1==1){
-        cout<<0<<endl;
-        return;
-    }
-
-    //
+        ll cnt = max(m1/2,m2);
+        ans = min(ans,cnt);
+    }cout<<ans<<"\n";
 }
 
 int main() {
     FAST_IO;
-
     int t;
     cin >> t;
     while (t--) {
