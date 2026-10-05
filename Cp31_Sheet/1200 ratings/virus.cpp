@@ -34,13 +34,18 @@ const int MOD2 = 998244353;
 
 #define nl '\n'
 
+template<class T> istream& operator>>(istream& is, vector<T>& v) {
+    for (auto& x : v) is >> x;
+    return is;
+}
 
 ll power(ll base, ll exp, ll m = MOD) {
     ll res = 1;
     base %= m;
+    if (base < 0) base += m;
     while (exp > 0) {
-        if (exp & 1) res = (res * base) % m;
-        base = (base * base) % m;
+        if (exp & 1) res = res * base % m;
+        base = base * base % m;
         exp >>= 1;
     }
     return res;
@@ -60,25 +65,44 @@ bool isPrime(ll n) {
     return true;
 }
 
-ll lcm (ll a , ll b){
-    return (a*b)/(__gcd(a,b));
+ll lcm(ll a, ll b) {
+    return a/ __gcd(a, b)*b;
 }
 
-ll get_msb(ll x) {
-    ll msb = -1;
-    while (x > 0) {
-        msb++;
-        x >>= 1;
+bool isAlreadyNonDecr(vector<ll>& arr){
+    ll n = arr.size();
+    rep(i,1,n){
+        if(arr[i-1]>arr[i]){
+            return false;
+        }
+    }return true;
+}
+
+void solve(){ 
+    ll n; cin>>n; vll arr(n) ; cin>>arr;
+
+    if(isAlreadyNonDecr(arr)){
+        cout<<0<<nl;
+        return;
     }
-    return msb;
-}
 
-void solve(){
+    if(arr[n-2]>arr[n-1]){
+        cout<<-1<<nl;
+        return;
+    }
+    if(arr[n-1]<0){
+        cout<<-1<<nl;
+        return;
+    }
+    cout<<n-2<<nl;
+    rep(i,0,n-2){
+        cout<<i+1<<" "<<n-1<<" "<<n<<nl;
+    }
 }
 
 int main() {
     FAST_IO;
-    int t;
+    int t ;
     cin >> t;
     while (t--) {
         solve();
