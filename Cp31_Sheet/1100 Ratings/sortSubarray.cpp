@@ -70,6 +70,29 @@ ll lcm(ll a, ll b) {
 }
 
 void solve(){
+    ll n; cin>>n;
+    vll a(n),b(n);
+    cin>>a>>b;
+    ll lo = 0 ,hi = 0;
+    rep(i,0,n){
+        if(a[i]!=b[i]){
+            lo = i;
+            break;
+        }
+    }
+    while(lo>0 && b[lo-1]<=b[lo]) lo--;
+    reverse(all(a));
+    reverse(all(b));
+    rep(i,0,n){
+        if(a[i]!=b[i]){
+            hi = i;
+            break;
+        }
+    }
+
+    while(hi>0 && b[hi-1]>=b[hi]) hi--;
+    
+    cout<<lo+1<<" "<<n-hi<<nl;
 }
 
 int main() {

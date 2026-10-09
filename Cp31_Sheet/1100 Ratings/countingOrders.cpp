@@ -70,6 +70,33 @@ ll lcm(ll a, ll b) {
 }
 
 void solve(){
+    ll n; cin>>n;
+    vll a(n) , b(n);
+    cin>>a>>b;
+    sort(rall(a));
+    sort(rall(b));
+
+    ll cnt = 0;
+    ll ans = 1;
+
+    rep(i,0,n){
+        rep(j,cnt,n){
+            if( b[i]<a[j] ){
+                cnt++;
+            }else{
+                break;
+            }
+        }
+        ll c =cnt-i;
+        if(c<=0){
+            ans = 0;
+            break;
+        }
+        ans = (ans*c)%MOD;
+    }
+
+
+    cout<<ans%MOD<<nl;
 }
 
 int main() {

@@ -70,6 +70,13 @@ ll lcm(ll a, ll b) {
 }
 
 void solve(){
+    ll n; cin>>n;
+    vll a(n);
+    cin>>a;
+    ll g = 0;
+    rep(i,0,n/2){
+        g = __gcd(g,llabs(a[i]-a[n-i-1]));
+    }cout<<g<<nl;
 }
 
 int main() {
