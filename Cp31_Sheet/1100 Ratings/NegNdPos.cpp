@@ -70,26 +70,6 @@ ll lcm(ll a, ll b) {
 }
 
 void solve(){
-    string s; cin>>s;
-    ll n = s.size();
-     s+= s;
-    ll cnt = 0;
-    ll maxi = -1;
-    rep(i,0,sz(s)){
-        if(s[i]=='1'){
-            cnt++;
-        }else{
-            cnt = 0;
-        }
-        maxi = max(maxi,cnt);
-    }
-    ll ans = 0;
-    if(maxi>=n){
-        ans += (n*n);
-    }else{
-        ans += ((maxi+1)/2 )*((maxi+2)/2);
-    }
-    cout<<ans<<nl;
 }
 
 int main() {
