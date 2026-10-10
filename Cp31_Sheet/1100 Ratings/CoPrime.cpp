@@ -72,17 +72,24 @@ ll lcm(ll a, ll b) {
 void solve(){
     ll n ; cin>>n;
     vll a(n); cin>>a;
-
-    ll p = a[0];
-    ll q = -a[0];
-    rep(i,1,n){
-        ll np = max(p+a[i],q-a[i]);
-        ll qp = max(p-a[i],q+a[i]);
-
-        p = np;
-        q = qp;
+    vi idx(1005,-1);
+    rep(i,0,n){
+        idx[a[i]]=i+1;
     }
-    cout<<p<<nl;
+    ll ans = -1;
+    rep(i,1,1001){
+        //ll maxi = 0;
+        rep(j,1,1001){
+            if(idx[i]!=-1 && idx[j]!=-1){
+                if(__gcd(i,j)==1) {
+                    ll sm = idx[i]+idx[j];
+                    ans = max(ans,sm);
+                }
+            }
+        }
+    }
+    if(ans==0) ans = -1;
+    cout<<ans<<nl;
 }
 
 int main() {
