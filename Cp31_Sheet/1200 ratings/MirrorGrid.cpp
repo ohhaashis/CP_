@@ -65,36 +65,78 @@ ll lcm (ll a , ll b){
 }
 
 void solve(){
-    ll n,s; cin>>n>>s;
-    vll arr(n);
-    rep(i,0,n) cin>>arr[i];
+    ll n;cin>>n;
+    vector<string>a(n);
+    rep(i,0,n) cin>>a[i];
+    ll ans = 0;
 
-    ll ones = 0;
-    fll(arr){
-        if(ele == 1) ones++;
-    }
-    if(ones < s){
-        cout<<-1<<nl;
-        return;
-    }
+    rep(i,0,n/2){
+        rep(j,0,(n+1)/2){
+            char c1 = a[i][j];
+            char c2 = a[j][n-1-i];
+            char c3 = a[n-1-i][n-1-j];
+            char c4 = a[n-1-j][i];
 
-    ll maxLen = -1;
-    ll sum = 0;
-    ll lo = 0;
-
-    rep(i,0,n){
-        sum += arr[i];
-        while(sum > s){
-            sum -= arr[lo];
-            lo++;
+            ll ones = (c1-'0') + (c2-'0') + (c3 - '0') + (c4-'0');
+            ll zeroes = 4 - ones;
+            ans+= min(ones,zeroes);
         }
-        if(sum == s){
-            maxLen = max(maxLen, i - lo + 1);
-        }
-    }
+    }cout<<ans<<nl;
 
-    if(maxLen == -1) cout<<-1<<nl;
-    else cout<<n - maxLen<<nl;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    // ll n,s; cin>>n>>s;
+    // vll arr(n);
+    // rep(i,0,n) cin>>arr[i];
+
+    // ll ones = 0;
+    // fll(arr){
+    //     if(ele == 1) ones++;
+    // }
+    // if(ones < s){
+    //     cout<<-1<<nl;
+    //     return;
+    // }
+
+    // ll maxLen = -1;
+    // ll sum = 0;
+    // ll lo = 0;
+
+    // rep(i,0,n){
+    //     sum += arr[i];
+    //     while(sum > s){
+    //         sum -= arr[lo];
+    //         lo++;
+    //     }
+    //     if(sum == s){
+    //         maxLen = max(maxLen, i - lo + 1);
+    //     }
+    // }
+
+    // if(maxLen == -1) cout<<-1<<nl;
+    // else cout<<n - maxLen<<nl;
 }
 
 int main() {
