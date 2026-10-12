@@ -69,7 +69,16 @@ ll lcm(ll a, ll b) {
 }
 
 void solve(){
-}
+    int n;
+    string s;
+    cin>>n>>s;
+    int open = 0, close = 0;
+    fch(s){
+        if(ch == '(') open++;
+        else close++;
+    }
+    cout<<(open == close ? "YES" : "NO")<<nl;
+}  
 
 int main() {
     FAST_IO;
