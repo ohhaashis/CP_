@@ -69,6 +69,28 @@ ll lcm(ll a, ll b) {
 }
 
 void solve(){
+    ll n,m; cin>>n>>m;
+    vll freq(n+1,0);
+    ll x = m;
+    while(x--){
+        ll a,b; cin>>a>>b;
+        freq[a]++;
+        freq[b]++;
+    }
+    ll mx = 0 ,mn = n;
+    rep(i,1,n+1){
+        mx = max(mx,freq[i]);
+        mn = min(mn,freq[i]);
+    }
+
+    if(mn==0){
+        cout<<"Brain Melt"<<nl;
+        //return;
+    }else if(m==n-1 && mx == n-1){
+        cout<<"2"<<nl;
+    }else{
+        cout<<"Many"<<nl;
+    }
 }  
 
 int main() {
