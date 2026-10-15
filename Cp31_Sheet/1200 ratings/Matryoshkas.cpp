@@ -16,7 +16,6 @@ using vllp = vector<pair<ll,ll>>;
 
 const ll INF = 2e18;         
 const int MOD = 1e9 + 7;    
-const int MOD2 = 998244353;
 
 #define all(x) (x).begin(), (x).end()
 #define rall(x) (x).rbegin(), (x).rend()
@@ -34,13 +33,18 @@ const int MOD2 = 998244353;
 
 #define nl '\n'
 
+template<class T> istream& operator>>(istream& is, vector<T>& v) {
+    for (auto& x : v) is >> x;
+    return is;
+}
 
 ll power(ll base, ll exp, ll m = MOD) {
     ll res = 1;
     base %= m;
+    if (base < 0) base += m;
     while (exp > 0) {
-        if (exp & 1) res = (res * base) % m;
-        base = (base * base) % m;
+        if (exp & 1) res = res * base % m;
+        base = base * base % m;
         exp >>= 1;
     }
     return res;
@@ -60,38 +64,39 @@ bool isPrime(ll n) {
     return true;
 }
 
-ll lcm (ll a , ll b){
-    return (a*b)/(__gcd(a,b));
-}
-
-ll get_msb(ll x) {
-    ll msb = -1;
-    while (x > 0) {
-        msb++;
-        x >>= 1;
-    }
-    return msb;
+ll lcm(ll a, ll b) {
+    return a/ __gcd(a, b)*b;
 }
 
 void solve(){
-    int n; cin>>n;
-    string str; cin>>str;
-
-    vll indices;
-    rep(i,0,n){
-        if(str[i]=='0'){
-            indices.push_back(i+1);
-        }
+    ll n ; cin>>n;
+    vll a(n); cin>>a;
+    map<ll,ll>mp;
+    fll(a){
+        mp[ele]++;
     }
-    cout<<indices.size()<<nl;
-    rep(i,0,indices.size()){
-        cout<<indices[i]<<" ";
-    }cout<<nl;
-}
+    ll ans = 0;
+    ll last_val = -1;
+    ll last_freq = 0;
+    for(const auto& entry : mp){
+        ll val = entry.fi;
+        ll freq = entry.se;
+        if(val == last_val + 1){
+            if(freq>last_freq){
+                ans += (freq-last_freq);
+            }
+        }else{
+            ans+=freq;
+        }
+        last_freq = freq;
+        last_val = val;
+    }
+    cout<<ans<<nl;
+}  
 
 int main() {
     FAST_IO;
-    int t;
+    int t ;
     cin >> t;
     while (t--) {
         solve();

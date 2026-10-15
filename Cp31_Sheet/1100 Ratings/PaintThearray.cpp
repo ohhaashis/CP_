@@ -30,17 +30,22 @@ const int MOD2 = 998244353;
 #define per(i, a, b) for (ll i = (b) - 1; i >= (a); --i)
 #define fll(x) for(ll ele : (x))
 #define fch(x) for(char ch : (x))
-#define fe(it, x) for(auto& it : (x))
+#define fit(it, x) for(auto& it : (x))
 
 #define nl '\n'
 
+template<class T> istream& operator>>(istream& is, vector<T>& v) {
+    for (auto& x : v) is >> x;
+    return is;
+}
 
 ll power(ll base, ll exp, ll m = MOD) {
     ll res = 1;
     base %= m;
+    if (base < 0) base += m;
     while (exp > 0) {
-        if (exp & 1) res = (res * base) % m;
-        base = (base * base) % m;
+        if (exp & 1) res = res * base % m;
+        base = base * base % m;
         exp >>= 1;
     }
     return res;
@@ -60,44 +65,80 @@ bool isPrime(ll n) {
     return true;
 }
 
-ll lcm (ll a , ll b){
-    return (a*b)/(__gcd(a,b));
+ll lcm(ll a, ll b) {
+    return a/ __gcd(a, b)*b;
 }
 
-ll get_msb(ll x) {
-    ll msb = -1;
-    while (x > 0) {
-        msb++;
-        x >>= 1; // Shifts all bits to the right by 1
+bool isPd(const vector<ll>& arr) {
+    if (arr.empty() || arr.size()==1) return true;
+    int l = 0, r = arr.size() - 1;
+    while(l < r) {
+        if(arr[l] != arr[r]) {
+            return false;
+        }
+        l++;
+        r--;
     }
-    return msb;
+    return true;
+}
+
+pair<ll, ll> pDindices(const vector<ll>& arr) {
+    if (arr.size() <= 1) return {-1, -1};
+    
+    ll l = 0, r = arr.size() - 1;
+    while(l < r) {
+        if(arr[l] != arr[r]) {
+            return {l, r};
+        }
+        l++;
+        r--;
+    }
+    return {-1, -1};
 }
 
 void solve(){
-    // ll n; cin>>n;
-    // vll arr(n);
-    // rep(i,0,n) cin>>arr[i];
+    ll n;cin>>n;
+    vll arr(n);
+    cin>>arr;
 
-    // ll hi = *std::max_element(arr.begin(),arr.end());
-
-    // rep(i,1,hi){
-    //     bool flag = true;
-    //     rep(j,1,n){
-    //         if()
-    //     }
-    // }
+    ll G1 = 0, G2 =0;
+    rep(i,0,n){
+        if((i+1)%2==0 ){
+            G1 = __gcd(G1,arr[i]);
+        }else{
+            G2 = __gcd(G2,arr[i]);
+        }
+    }
+    bool G1_is = true , G2_is = true;
+    rep(i,0,n){
+        if((i+1)%2==0 ){
+            if(arr[i]%G2==0){
+                G2_is= false;
+            }
+        }else{
+            if( arr[i]%G1==0 ){
+                G1_is = false;
+            }
+        }
+    }
+    if(G1_is){
+        cout<<G1<<nl;
+        return;
+    }else if(G2_is){
+        cout<<G2<<nl;
+        return;
+    }else if(!G1_is && !G2_is){
+        cout<<0<<nl;
+        return;
+    }
 }
 
 int main() {
     FAST_IO;
-
-    int t;
+    int t ;
     cin >> t;
     while (t--) {
         solve();
     }
-
-    // solve();
-
     return 0;
 }
