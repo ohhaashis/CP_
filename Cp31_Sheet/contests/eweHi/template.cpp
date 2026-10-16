@@ -13,7 +13,7 @@ using vll = vector<ll>;
 using vvi = vector<vector<int>>;
 using vvll= vector<vector<ll>>;
 
-const ll INF = 1e18;         
+const ll INF = 2e18;         
 const int MOD = 1e9 + 7;    
 const int MOD2 = 998244353;
 
@@ -27,6 +27,11 @@ const int MOD2 = 998244353;
 
 #define rep(i, a, b) for (ll i = (a); i < (b); ++i)
 #define per(i, a, b) for (ll i = (b) - 1; i >= (a); --i)
+#define fll(x) for(ll ele : (x))
+#define fch(x) for(char ch : (x))
+#define fe(it, x) for(auto& it : (x))
+
+#define nl '\n'
 
 
 ll power(ll base, ll exp, ll m = MOD) {
@@ -58,17 +63,12 @@ ll lcm (ll a , ll b){
     return (a*b)/(__gcd(a,b));
 }
 
-ll calcSum(ll st , ll end){
-    ll sum = ( (st+end)*(end-st+1) )/2;
-    return sum;
-}
-
 void solve(){
+    // ab purane laptop se cp practise ni krenge    
 }
 
 int main() {
     FAST_IO;
-
     int t;
     cin >> t;
     while (t--) {
