@@ -89,6 +89,13 @@ void solve(){
     }
 }  
 
+
+    // ll mid = (n+1)/2;
+    // cout<<mid<<nl;
+    // rep(i,1,mid+1){
+    //     cout<<i<<" "<<i+mid-1<<nl;
+    // }
+
 int main() {
     FAST_IO;
     int t ;
