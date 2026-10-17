@@ -69,6 +69,24 @@ ll lcm(ll a, ll b) {
 }
 
 void solve(){
+    ll n; cin>>n;
+    vll a(n);
+    cin>>a;
+
+     ll o = 0 , e= 0; // s= 0;
+    fll(a){
+        if(ele%2==0){
+            e++;
+        }else{
+            o++;
+        }
+        //s+=ele;
+    }
+    if(((n==2) && o==1) || (n==3 && o==3)){
+        cout<<"Larpity"<<nl;
+    }else{
+        cout<<"Moggity"<<nl;
+    }
 }  
 
 int main() {
