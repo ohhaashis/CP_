@@ -78,25 +78,21 @@ ll get_emotes(ll m, ll k){
 }
 
 void solve(){
-    int n ;char ch;
-    cin>>n>>ch;
-    string s; cin>>s;
+    ll n; cin>>n;
+    vll a(n); cin>>a;
+    map<ll,ll,greater<ll>>mp;
+    fll(a) mp[ele]++;
+    int i = 0;
 
-    int ans = 0;
-    int lo = 0 , hi = n-1;
-    while(lo<hi){
-        if(s[lo]!=s[hi]){
-            if(s[lo]!=ch){
-                ans++;
-            }
-             if(s[hi]!=ch){
-                ans++;
+    while(i<n){
+        for(auto& it: mp){
+            if(it.se>0){
+                cout<<it.fi<<" ";
+                it.se--;
+                i++;
             }
         }
-        lo++;
-        hi--;
-    }
-    cout<<ans<<nl;
+    }cout<<nl;
 }  
 
 int main() {
