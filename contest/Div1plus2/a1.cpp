@@ -78,24 +78,21 @@ ll get_emotes(ll m, ll k){
 }
 
 void solve(){
-    ll n, k; cin>>n>>k;
-    vll a(n); cin>>a;
-    unordered_map<ll,ll>freq;
-    fll(a) freq[ele]++;
-    bool flag = true;
-    for(ll i = 0 ; ; i++){
-        if(freq[i]<2*k){
-            if(freq[i]==2*k-1){
-                flag = false;
-            }
-            break;
-        }
+    ll a,b; cin>>a>>b;
+    if(a==0 && b==0){
+        cout<<0<<nl;
+        return;
     }
-    if(flag==false){
-        cout<<"YES\n";
+    if(a+1<b){
+        cout<<-1<<nl;
+        return;
+    }
+
+    if(a%2==b%2){
+        cout<<a<<nl;
         return;
     }else{
-        cout<<"NO\n";
+        cout<<a+1<<nl;
         return;
     }
 }  
