@@ -78,23 +78,22 @@ ll get_emotes(ll m, ll k){
 }
 
 void solve(){
-    ll a,b; cin>>a>>b;
-    if(a==0 && b==0){
-        cout<<0<<nl;
-        return;
-    }
-    if(a+1<b){
-        cout<<-1<<nl;
-        return;
-    }
+    int n ;char ch;
+    cin>>n>>ch;
+    string s; cin>>s;
 
-    if(a%2==b%2){
-        cout<<a<<nl;
-        return;
-    }else{
-        cout<<a+1<<nl;
-        return;
+    int ans = 0;
+    rep(i,0,n){
+        if(s[i]!=s[n-i+1]){
+            if(s[i]!=ch){
+                ans++;
+            }
+            if(s[n-i+1]!=ch){
+                ans++;
+            }
+        }
     }
+    cout<<ans<<nl;
 }  
 
 int main() {
