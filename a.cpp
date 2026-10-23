@@ -78,24 +78,21 @@ ll get_emotes(ll m, ll k){
 }
 
 void solve(){
-    ll n,m; cin>>n>>m;
-    vll a(n); cin>>a;
-    ll b = 0, ans = 0;
-    rep(i,0,n){
-        ll q = (a[i]+m-1)/m;
-        if(q>=b){
-            b=q;
-            ans = i+1;
-        }
+    ll n; cin>>n;
+    string s; cin>>s;
+    ll ans = 0;
+    fch(s){
+        ll val = 1+ (ch-'a');
+        ans = max(ans,val);
     }cout<<ans<<nl;
 }  
 
 int main() {
     FAST_IO;
-    // int t ;
-    // cin >> t;  
-    // while (t--) {
+    int t ;
+    cin >> t;  
+    while (t--) {
         solve();
-    //}
+    }
     return 0;
 }
