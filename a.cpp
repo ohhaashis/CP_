@@ -78,18 +78,24 @@ ll get_emotes(ll m, ll k){
 }
 
 void solve(){
-    ll a,b; cin>>a>>b;
-    if(b>a){
-        cout<<-1<<nl;
-        return;
+    ll n,m ; cin>>n>>m;
+    vll a(n);
+    cin>>a;
+    vll b(m); cin>>b;
+    reverse(all(a));
+    vll dp(n+1,0);
+    vector<bool>vis(100001,false);
+    rep(i,0,n){
+        if(vis[a[i]]==false){
+            vis[a[i]]=true;
+            dp[i+1] = 1+dp[i];
+        }else{
+            dp[i+1]=dp[i];
+        }
     }
-
-    ll mn = (a+1)/2;
-    ll ans = ((mn+b-1)/b)*b;
-    if(ans<=a){
-        cout<<ans<<nl;
-    }else{
-        cout<<-1<<nl;
+    reverse(all(dp));
+    rep(i,0,m){
+        cout<<dp[b[i]-1]<<nl;
     }
 }  
 
