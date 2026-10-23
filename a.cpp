@@ -78,21 +78,27 @@ ll get_emotes(ll m, ll k){
 }
 
 void solve(){
-    ll n;cin>>n;
-    if(360%(180-n)==0){
-        cout<<"YES\n";
-    }else{
-        cout<<"NO\n";
+    ll a,b; cin>>a>>b;
+    if(b>a){
+        cout<<-1<<nl;
+        return;
     }
-    
+
+    ll mn = (a+1)/2;
+    ll ans = ((mn+b-1)/b)*b;
+    if(ans<=a){
+        cout<<ans<<nl;
+    }else{
+        cout<<-1<<nl;
+    }
 }  
 
 int main() {
     FAST_IO;
-    int t ;
-    cin >> t;  
-    while (t--) {
+    // int t ;
+    // cin >> t;  
+    // while (t--) {
         solve();
-    }
+    //}
     return 0;
 }
