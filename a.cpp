@@ -78,21 +78,13 @@ ll get_emotes(ll m, ll k){
 }
 
 void solve(){
-    ll n; cin>>n;
-    vll a(n); cin>>a;
-    map<ll,ll,greater<ll>>mp;
-    fll(a) mp[ele]++;
-    int i = 0;
-
-    while(i<n){
-        for(auto& it: mp){
-            if(it.se>0){
-                cout<<it.fi<<" ";
-                it.se--;
-                i++;
-            }
-        }
-    }cout<<nl;
+    ll n;cin>>n;
+    if(360%(180-n)==0){
+        cout<<"YES\n";
+    }else{
+        cout<<"NO\n";
+    }
+    
 }  
 
 int main() {
