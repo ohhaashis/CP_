@@ -88,42 +88,6 @@ bool isSorted(vector<ll>& a){
 }
 
 void solve(){ 
-    ll n;
-    cin>>n;
-    vll a(n); cin>>a;
-    if(isSorted(a)){
-        cout<<"yes\n";
-        cout<<1<<" "<<1<<nl;
-        return;
-    }
-    ll l = -1 , r = -1;
-    rep(i,1,n){
-        if(l==-1){
-        if(a[i-1]>a[i]){
-            //if(l==0){
-                l = i-1;
-            //}
-        }
-    }
-    else if(r==-1){
-        if(a[i-1]<a[i]){
-                r=i-1;
-                break;
-            
-        }
-    }
-    }
-    if(l!=-1 && r==-1){
-        r = n-1;
-    }
-    reverse(a.begin()+l,a.begin()+r+1);
-
-    if(isSorted(a)){
-        cout<<"yes\n";
-        cout<<l+1<<" "<<r+1<<nl;
-    }else{
-        cout<<"no\n";
-    }
 }  
 
 int main() {
