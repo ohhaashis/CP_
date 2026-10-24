@@ -15,7 +15,8 @@ using vvll= vector<vector<ll>>;
 using vllp = vector<pair<ll,ll>>;
 
 const ll INF = 2e18;         
-const int MOD = 1e9 + 7;    
+const int MOD = 1e9 + 7;  
+const ll MOD2 = 998244353;  
 
 #define all(x) (x).begin(), (x).end()
 #define rall(x) (x).rbegin(), (x).rend()
@@ -38,7 +39,7 @@ template<class T> istream& operator>>(istream& is, vector<T>& v) {
     return is;
 }
 
-ll power(ll base, ll exp, ll m = MOD) {
+ll power(ll base, ll exp, ll m) {
     ll res = 1;
     base %= m;
     if (base < 0) base += m;
@@ -68,13 +69,12 @@ ll lcm(ll a, ll b) {
     return a/ __gcd(a, b)*b;
 }
 
-ll get_emotes(ll m, ll k){
-    if(m<=k){
-        return m*(m+1)/2;
-    }else{
-        ll s = (2*k-1) -m;
-        return k*k - s*(s+1)/2;
-    }
+ll highestBit(ll x){
+    ll p =0;
+    while(x>1){
+        x>>=1;
+        p++;
+    }return p;
 }
 
 bool isSorted(vector<ll>& a){
@@ -87,26 +87,30 @@ bool isSorted(vector<ll>& a){
     return true;
 }
 
+ll f(ll n){
+    if(n==2){
+        return 3;
+    }
+    ll p = highestBit(n+1);
+    
+    ll under= (1LL<<p)-1;
+    ll over= (1LL<<(p+1))-1;
+
+    if(under==n){
+        return p;
+    }
+    ll optOver= (p+1)+ (over-n);
+    ll optUnder= (p+1)+ f(n-under+1);
+
+    return min(optOver,optUnder);
+}
+  
 void solve(){
-    ll n; cin>>n;
-    vll a(n); cin>>a;
-    if(n==1){
-        if(a[0]==0){
-            cout<<1<<nl;
-            return;
-        }
-    }
+    ll l,r; cin>>l>>r;
     ll ans = 0;
-    fll(a){
-        if(ele<=n- 1){
-            ans = n;
-        }
-    }
-    if(ans==n){
-        cout<<ans<<nl;
-        return;
-    }
-    cout<<0<<nl; 
+    rep(i,l,r+1){
+        ans = (ans+f(i))%MOD2;
+    }cout<<ans<<nl;
 }
 
 int main() {
