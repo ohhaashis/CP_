@@ -77,29 +77,53 @@ ll get_emotes(ll m, ll k){
     }
 }
 
-void solve(){
-    int n,m; cin>>n>>m;
-    int ans = 0;
-    int cnt = 0;
-    int j = -1;
-    rep(i,1,n+1){
-        if(i%m==0){
-            cnt++;
-        }
-        if(i==n){
-            j = i+1;
+bool isSorted(vector<ll>& a){
+    ll len = sz(a);
+    rep(i,1,len){
+        if(a[i-1]>a[i]){
+            return false;
         }
     }
-    ll x = cnt;
-    while(x--){
-        if(j%m==0){
-            cnt++;
-            x++;
-        }
-        j++;
+    return true;
+}
+
+void solve(){ 
+    ll n;
+    cin>>n;
+    vll a(n); cin>>a;
+    if(isSorted(a)){
+        cout<<"yes\n";
+        cout<<1<<" "<<1<<nl;
+        return;
     }
-    ans = cnt+n;
-    cout<<ans<<nl;
+    ll l = -1 , r = -1;
+    rep(i,1,n){
+        if(l==-1){
+        if(a[i-1]>a[i]){
+            //if(l==0){
+                l = i-1;
+            //}
+        }
+    }
+    else if(r==-1){
+        if(a[i-1]<a[i]){
+                r=i-1;
+                break;
+            
+        }
+    }
+    }
+    if(l!=-1 && r==-1){
+        r = n-1;
+    }
+    reverse(a.begin()+l,a.begin()+r+1);
+
+    if(isSorted(a)){
+        cout<<"yes\n";
+        cout<<l+1<<" "<<r+1<<nl;
+    }else{
+        cout<<"no\n";
+    }
 }  
 
 int main() {
