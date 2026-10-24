@@ -88,6 +88,14 @@ bool isSorted(vector<ll>& a){
 }
 
 void solve(){
+    ll n; cin>>n;
+    vll a(n); cin>>a;
+    if(n==1){
+        if(a[0]==0){
+            cout<<1<<nl;
+            return;
+        }
+    }
 }  
 
 int main() {
