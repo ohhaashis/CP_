@@ -96,7 +96,18 @@ void solve(){
             return;
         }
     }
-}  
+    ll ans = 0;
+    fll(a){
+        if(ele<=n- 1){
+            ans = n;
+        }
+    }
+    if(ans==n){
+        cout<<ans<<nl;
+        return;
+    }
+    cout<<0<<nl; 
+}
 
 int main() {
     FAST_IO;
