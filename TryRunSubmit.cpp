@@ -16,7 +16,6 @@ using vllp = vector<pair<ll,ll>>;
 
 const ll INF = 2e18;         
 const int MOD = 1e9 + 7;    
-const int MOD2 = 998244353;
 
 #define all(x) (x).begin(), (x).end()
 #define rall(x) (x).rbegin(), (x).rend()
@@ -30,7 +29,7 @@ const int MOD2 = 998244353;
 #define per(i, a, b) for (ll i = (b) - 1; i >= (a); --i)
 #define fll(x) for(ll ele : (x))
 #define fch(x) for(char ch : (x))
-#define fit(it, x) for(auto& it : (x))
+#define fit(it, x) for(auto &it : (x))
 
 #define nl '\n'
 
@@ -69,15 +68,34 @@ ll lcm(ll a, ll b) {
     return a/ __gcd(a, b)*b;
 }
 
-void solve(){
+ll get_emotes(ll m, ll k){
+    if(m<=k){
+        return m*(m+1)/2;
+    }else{
+        ll s = (2*k-1) -m;
+        return k*k - s*(s+1)/2;
+    }
 }
+
+bool isSorted(vector<ll>& a){
+    ll len = sz(a);
+    rep(i,1,len){
+        if(a[i-1]>a[i]){
+            return false;
+        }
+    }
+    return true;
+}
+
+void solve(){
+}  
 
 int main() {
     FAST_IO;
     int t ;
-    cin >> t;
+    cin >> t;  
     while (t--) {
         solve();
     }
     return 0;
-}
+}  
