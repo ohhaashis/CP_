@@ -88,20 +88,14 @@ bool isSorted(vector<ll>& a){
 }
 
 void brute(){
-    string s; cin>>s;
-    ll n = sz(s);
+    ll n; cin>>n;
+    vll p(n); cin>>p;
 
-    set<char> st(all(s));
-    ll k = sz(st);
-
-    bool ans = true;
-    rep(i,k,n){
-        if(s[i] != s[i-k]){ 
-            ans = false;
-             break;
-            }
+    ll ans = -1;
+    rep(i,0,n){
+        if(p[i] != i) ans &= p[i];
     }
-    cout<<(ans ? "YES" : "NO")<<nl;
+    cout<<ans<<nl;
 }
 
 int main() {
