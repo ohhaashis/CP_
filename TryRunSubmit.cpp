@@ -87,30 +87,24 @@ bool isSorted(vector<ll>& a){
     return true;
 }
 
-ll f(ll n){
-    if(n==2){
-        return 3;
-    }
-    ll p = highestBit(n+1);
-    
-    ll under= (1LL<<p)-1;
-    ll over= (1LL<<(p+1))-1;
-
-    if(under==n){
-        return p;
-    }
-    ll optOver= (p+1)+ (over-n);
-    ll optUnder= (p+1)+ f(n-under+1);
-
-    return min(optOver,optUnder);
-}
-  
 void solve(){
-    ll l,r; cin>>l>>r;
-    ll ans = 0;
-    rep(i,l,r+1){
-        ans = (ans+f(i))%MOD2;
-    }cout<<ans<<nl;
+    ll n; cin>>n;
+    string a,b;
+    cin>>a>>b;
+    bool sameHai = true;
+
+    rep(i,0,n){
+        if(a[i]=='R' && b[i]!='R'){
+            sameHai = false;
+        }else if( (a[i]!='R' && b[i]=='R') ){
+            sameHai = false;
+        }
+    }
+    if(sameHai){
+        cout<<"YES\n";
+    }else{
+        cout<<"NO\n";
+    }
 }
 
 int main() {
