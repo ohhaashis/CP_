@@ -87,23 +87,21 @@ bool isSorted(vector<ll>& a){
     return true;
 }
 
-void solve(){
-    ll k, l, m, n, d;
-    cin>>k>>l>>m>>n>>d;
-    ll ans = 0;
-    for(ll i = 1; i <= d; i++){
-        if(i % k == 0 || i % l == 0 || i % m == 0 || i % n == 0)
-            ans++;
+void brute(){
+    ll n, k; cin>>n>>k;
+    if(k*k<=n && (n-k)%2==0){
+        cout<<"YES\n";
+    }else{
+        cout<<"NO\n";
     }
-    cout<<ans<<nl;
 }
 
 int main() {
     FAST_IO;
-    int t=1 ;
-    //cin >> t;  
+    int t=1;
+    cin >> t;  
     while (t--) {
-        solve();
+        brute();
     }
     return 0;
 }  
