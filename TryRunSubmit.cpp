@@ -89,28 +89,24 @@ bool isSorted(vector<ll>& a){
 
 void solve(){
     ll n; cin>>n;
-    string a,b;
-    cin>>a>>b;
-    bool sameHai = true;
-
-    rep(i,0,n){
-        if(a[i]=='R' && b[i]!='R'){
-            sameHai = false;
-        }else if( (a[i]!='R' && b[i]=='R') ){
-            sameHai = false;
-        }
-    }
-    if(sameHai){
-        cout<<"YES\n";
-    }else{
-        cout<<"NO\n";
-    }
+    vll a(n); cin>>a;
+    sort(all(a));
+    
+    ll ans  =0;
+    ll l = 0 ,r = n-1;
+    while(l<=r){
+        ll cnt = a[r];
+        r--;
+        while(l<=r && cnt+a[l]<=4){
+            cnt+=a[l++];
+        }ans++;
+    }cout<<ans<<nl;
 }
 
 int main() {
     FAST_IO;
-    int t ;
-    cin >> t;  
+    int t=1 ;
+    //cin >> t;  
     while (t--) {
         solve();
     }
