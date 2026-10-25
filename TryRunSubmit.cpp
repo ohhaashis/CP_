@@ -88,24 +88,26 @@ bool isSorted(vector<ll>& a){
 }
 
 void brute(){
-    ll n, l; cin>>n>>l;
-    vll a(n); cin>>a;
-    sort(all(a));
+    string s; cin>>s;
+    ll n = sz(s);
 
-    ll mx = 0;
-    rep(i,1,n){
-        mx = max(mx,a[i]-a[i-1]);
+    set<char> st(all(s));
+    ll k = sz(st);
+
+    bool ans = true;
+    rep(i,k,n){
+        if(s[i] != s[i-k]){ 
+            ans = false;
+             break;
+            }
     }
-    double ans = mx/2.0;
-    ans = max(ans,(double)a[0]);
-    ans = max(ans,(double)(l-a[n-1]));
-    cout<<fixed<<setprecision(10)<<ans<<nl;
+    cout<<(ans ? "YES" : "NO")<<nl;
 }
 
 int main() {
     FAST_IO;
-    int t=1;
-    //cin >> t;  
+    int t;
+    cin >> t;  
     while (t--) {
         brute();
     }
