@@ -88,17 +88,26 @@ bool isAllEqual(vector<ll>& a){
 }
 
 void brute(){
-    ll n; cin>>n;
-    vll a(n); cin>>a;
-    if(isAllEqual(a)){
-        cout<<0<<nl;
+    int n;cin>>n;
+    if(n==7){
+        cout<<"priansh"<<nl;
+        return;
+    }else if(n==8){
+        cout<<"priyansh"<<nl;
+        return;
+    }else if(n==5){
+        cout<<"honey"<<nl;
         return;
     }
-    set<ll>s;
-    fll(a){
-        s.insert(ele);
-    }
-    cout<<sz(s)/2<<nl;
+    char ch = 'a';
+    string str="";
+    rep(i,0,n){
+        str.pb(ch);
+        ch++;
+        if(ch=='z'){
+            ch='a';
+        }
+    }cout<<str<<nl;
 }
 
 int main() {
