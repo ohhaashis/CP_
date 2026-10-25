@@ -88,8 +88,8 @@ bool isSorted(vector<ll>& a){
 }
 
 void brute(){
-    ll n; cin>>n;
-    vll a(a); cin>>a;
+    ll n, l; cin>>n>>l;
+    vll a(n); cin>>a;
     sort(all(a));
 
     ll mx = 0;
@@ -98,14 +98,14 @@ void brute(){
     }
     double ans = mx/2.0;
     ans = max(ans,(double)a[0]);
-    ans = max(ans,(double)(1-a[n-1]));
+    ans = max(ans,(double)(l-a[n-1]));
     cout<<fixed<<setprecision(10)<<ans<<nl;
 }
 
 int main() {
     FAST_IO;
     int t=1;
-    cin >> t;  
+    //cin >> t;  
     while (t--) {
         brute();
     }
