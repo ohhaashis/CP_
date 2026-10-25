@@ -77,10 +77,10 @@ ll highestBit(ll x){
     }return p;
 }
 
-bool isSorted(vector<ll>& a){
+bool isAllEqual(vector<ll>& a){
     ll len = sz(a);
     rep(i,1,len){
-        if(a[i-1]>a[i]){
+        if(a[i-1]!=a[i]){
             return false;
         }
     }
@@ -89,13 +89,16 @@ bool isSorted(vector<ll>& a){
 
 void brute(){
     ll n; cin>>n;
-    vll p(n); cin>>p;
-
-    ll ans = -1;
-    rep(i,0,n){
-        if(p[i] != i) ans &= p[i];
+    vll a(n); cin>>a;
+    if(isAllEqual(a)){
+        cout<<0<<nl;
+        return;
     }
-    cout<<ans<<nl;
+    set<ll>s;
+    fll(a){
+        s.insert(ele);
+    }
+    cout<<sz(s)/2<<nl;
 }
 
 int main() {
