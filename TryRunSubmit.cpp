@@ -88,12 +88,18 @@ bool isSorted(vector<ll>& a){
 }
 
 void brute(){
-    ll n, k; cin>>n>>k;
-    if(k*k<=n && (n-k)%2==0){
-        cout<<"YES\n";
-    }else{
-        cout<<"NO\n";
+    ll n; cin>>n;
+    vll a(a); cin>>a;
+    sort(all(a));
+
+    ll mx = 0;
+    rep(i,1,n){
+        mx = max(mx,a[i]-a[i-1]);
     }
+    double ans = mx/2.0;
+    ans = max(ans,(double)a[0]);
+    ans = max(ans,(double)(1-a[n-1]));
+    cout<<fixed<<setprecision(10)<<ans<<nl;
 }
 
 int main() {
