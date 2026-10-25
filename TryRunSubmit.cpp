@@ -88,19 +88,14 @@ bool isSorted(vector<ll>& a){
 }
 
 void solve(){
-    ll n; cin>>n;
-    vll a(n); cin>>a;
-    sort(all(a));
-    
-    ll ans  =0;
-    ll l = 0 ,r = n-1;
-    while(l<=r){
-        ll cnt = a[r];
-        r--;
-        while(l<=r && cnt+a[l]<=4){
-            cnt+=a[l++];
-        }ans++;
-    }cout<<ans<<nl;
+    ll k, l, m, n, d;
+    cin>>k>>l>>m>>n>>d;
+    ll ans = 0;
+    for(ll i = 1; i <= d; i++){
+        if(i % k == 0 || i % l == 0 || i % m == 0 || i % n == 0)
+            ans++;
+    }
+    cout<<ans<<nl;
 }
 
 int main() {
