@@ -88,34 +88,24 @@ bool isAllEqual(vector<ll>& a){
 }
 
 void brute(){
-    int n;cin>>n;
-    if(n==7){
-        cout<<"priansh"<<nl;
-        return;
-    }else if(n==8){
-        cout<<"priyansh"<<nl;
-        return;
-    }else if(n==5){
-        cout<<"honey"<<nl;
-        return;
+    string str;
+    cin>>str;
+    ll n = sz(str);
+    vll pre(n,0);
+    rep(i,1,n){
+        pre[i]=pre[i-1]+(str[i-1]==str[i]);
     }
-    char ch = 'a';
-    string str="";
-    rep(i,0,n){
-        str.pb(ch);
-        ch++;
-        if(ch=='z'){
-            ch='a';
-        }
-    }cout<<str<<nl;
+    ll m; cin>>m;
+    while(m--){
+        ll l,r; cin>>l>>r;
+        cout<<pre[r-1]-pre[l-1]<<nl;
+    }
+
 }
 
-int main() {
+int main(){
     FAST_IO;
-    int t;
-    cin >> t;  
-    while (t--) {
-        brute();
-    }
-    return 0;
-}  
+    // ll t; cin >> t;
+    // while (t--) brute();
+    brute();
+}
