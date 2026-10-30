@@ -88,20 +88,12 @@ bool isAllEqual(vector<ll>& a){
 }
 
 void brute(){
-    ll n;cin>>n;
-    vll luck = {4, 7, 44, 47, 74, 77, 444, 447, 474, 477, 744, 747, 774, 777};
-    bool y = false;
-    fll(luck){
-        if(n%ele==0){
-            y = true;
-            break;
-        }
-    }
-    if(y){
-        cout<<"YES\n";
-    }else{
-        cout<<"NO\n";
-    }
+    ll x,y; cin>>x>>y;
+    ll a,b; cin>>a>>b;
+    if(x>y) swap(x,y);
+    ll c1 = (x+y)*a;
+    ll c2 = x*b + (y-x)*a;
+    cout<<min(c1,c2)<<nl;
 }
 
 int main(){
