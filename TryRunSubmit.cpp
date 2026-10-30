@@ -88,17 +88,19 @@ bool isAllEqual(vector<ll>& a){
 }
 
 void brute(){
-    ll x,y; cin>>x>>y;
     ll a,b; cin>>a>>b;
-    if(x>y) swap(x,y);
-    ll c1 = (x+y)*a;
-    ll c2 = x*b + (y-x)*a;
-    cout<<min(c1,c2)<<nl;
+    ll th = a;
+    while(a>=b){
+        ll n = a/b;
+        ll l  = a%b;
+        th += n;
+        a = n+l;
+    }cout<<th<<nl;
 }
 
 int main(){
     FAST_IO;
-    ll t; cin >> t;
-    while (t--) brute();
-    // brute();
+    // ll t; cin >> t;
+    // while (t--) brute();
+     brute();
 }
