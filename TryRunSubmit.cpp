@@ -98,7 +98,7 @@ void brute(){
 
 int main(){
     FAST_IO;
-    // ll t; cin >> t;
-    // while (t--) brute();
-    brute();
+    ll t; cin >> t;
+    while (t--) brute();
+    // brute();
 }
